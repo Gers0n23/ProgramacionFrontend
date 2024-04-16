@@ -1,0 +1,20 @@
+<style>
+    body { font-family: Arial, sans-serif ; line-height: 1.6; }
+    .container { width: 80%; margin: auto; overflow: hidden; text-align: center; }
+    header { background: #4b3a02; color: #fffefe; padding-top: 30px; min-height: 70px; border-bottom: #695204 3px solid; text-align: center;}
+    header a { color: #b38865; text-decoration: none; text-transform: uppercase; font-size: 16px; }
+    header ul { padding: 0; list-style: none; text-align: center; }
+    header li { float: center; display: inline; padding: 0 20px 0 20px; text-align: center; }
+    header #branding { float: center; }
+    header #branding h1 { margin: 0; }
+    header nav { float: center}
+    header .highlight, header .current a { color: #fcfbfb; font-weight: bold;font-size: larger; }
+    header a:hover { color: #edeee4; font-weight: bold; }
+    .imagen-container {text-align: center;}
+    .aida { padding: 15px; color: #333; }
+    .attention { background: #352a01; color: #fff; }
+    .interest { background: #f4f4f4; }
+    .desire { background: #333; color: #fff; }
+    .action { background: #006699; color: #fff; }
+    footer { background: #333; color: #fff; text-align: center; padding: 10px; margin-top: 20px; }
+</style>
