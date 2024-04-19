@@ -2,6 +2,7 @@
 <head>
 <title>INACAPLudi - Club de Juegos de Mesa y Rol</title>
 <link rel="stylesheet" type="text/css" href="Styles/style.css">
+<script src="scripts/form.js"></script>
 </head>
 <body>
     <header>
@@ -50,19 +51,66 @@
         <div class="container">
             <h2>Actividades</h2>
             <p>Participa en nuestros eventos locales y nacionales, y accede a nuestra ludoteca exclusiva.</p>
+            <p>¡Bienvenidos al universo lúdico! Somos como la biblioteca de Alejandría, pero con dados en lugar de pergaminos. Aquí, las partidas son obras de teatro, los eventos son fiestas sin reglas y las charlas son como clases de magia (sin varitas). Así que, ¿listo para lanzar los dados y unirte a la fiesta? 🎲🌟
+            </p>
         </div>
     </section>
 
     <section class="aida action">
         <div class="container">
             <h2>Únete a la Aventura</h2>
-            <p>¿Estás listo para explorar nuevos mundos? Deja tus datos y te contactaremos.</p>
-            <!-- Formulario de contacto aquí -->
+        </div>
+        <div class="container" id="form">
+            <form id="call2action" onsubmit="return sendForm(this);">
+                <div>
+                    <p>¿Estás listo para explorar nuevos mundos? Deja tus datos y te contactaremos.</p>
+                    <span><label for="form_name"><h3>Tu nombre:</h3></label></span>
+                    <span><input class="input" type="text" id="form_name" name="form_name"/></span>
+                </div>
+                <div>
+                    <span><label for="form_email"><h3> e-mail:</h3></label></span>
+                    <span><input class="input" type="text" id="form_email" name="form_email"/></span>
+                </div>
+                <div>
+                    <span><label for="form_game"><h3>Me gusta jugar:</h3></label></span>
+                    <span>
+                        <select class="input" id="form_game" name="form_game">
+                            <option value="">Selecciona el tipo de juego</option>
+                            <option value="de Cartas">Juegos de Cartas</option>
+                            <option value="Cooperativos">Juegos Cooperativos</option>
+                            <option value="Temáticos">Juegos Temáticos</option>
+                            <option value="de Estrategia">Juegos de Estrategia</option>
+                            <option value="de Aventura">Juegos de Aventura</option>
+                            <option value="de Acertijos">Juegos de Acertijos</option>
+                            <option value="Tradicionales">Juegos Tradicionales</option>
+                            <option value="de Rol">Juegos de Rol</option>
+                        </select>
+                    </span>
+                </div>
+                <div>
+                    <span><button class="button" type="submit" name="submit">Enviar</button></span>
+                </div>
+            </form>    
+        </div>
+        <div class="container" id="gift" style="display: none;">
+            <p>
+                Gracias por enviarnos tus datos, <span id="contact_name" style="font-weight: bold;"></span>. 
+                Notamos que te apasionan los Juegos <span id="contact_game" style="font-weight: bold;"></span>. 
+                Nos contactaremos contigo a la brevedad usando tu dirección <span id="contact_email" style="font-weight: bold;"></span>.
+            </p>
+            <p>
+                Y no olvides que tenemos para tí un regalo por tu interés: 
+            </p>
+            <h2>
+                <a href="https://quejuegosdemesa.com/instrucciones/" target="_blank">
+                    Descarga aquí instrucciones de juegos de mesa
+                </a>
+            </h2>
         </div>
     </section>
 
     <footer>
-        <p>INACAPLudi © 2024</p>
+        <p>InacapLudi © 2024</p>
     </footer>
 </body>
 </html>
