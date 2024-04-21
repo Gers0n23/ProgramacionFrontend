@@ -4,7 +4,7 @@
     header { margin-top: 0;position:fixed; width: 98.8%; background: #0f0c00; color: #fffefe; padding-top: 0px; min-height: 70px; border-bottom: #251d00 3px solid; text-align: center;}
     header a { padding: 5;color: #e4ddd8; text-decoration:none; text-transform: uppercase; font-size: 20px;  }
     header ul { padding: 0; list-style: none; text-align: center; }
-    header li { float: right; display: inline; padding: 7px 10px 7px 10px; text-align: center; }
+    header li { float: right; display: inline; padding: 14px 10px 10px 10px; text-align: center; }
     header #branding { float: left; }
     header #branding h1 { margin: 0; }
     header nav { float: center}
