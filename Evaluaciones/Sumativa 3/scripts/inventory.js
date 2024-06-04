@@ -1,0 +1,18 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const productContainer = document.querySelector('.product-container');
+
+    catalogo.forEach(producto => {
+        const productCard = document.createElement('div');
+        productCard.classList.add('product-card');
+
+        productCard.innerHTML = `
+            <img src="assets/${producto.imagen}" alt="${producto.nombre}" width="230" height="380">
+            <h3>${producto.nombre}</h3>
+            <p>Precio: $${producto.precio}</p>
+            <p>Disponibilidad: ${producto.disponibilidad} unidades</p>
+            <button class="add-to-cart-btn">Agregar al carrito</button>
+        `;
+
+        productContainer.appendChild(productCard);
+    });
+});

@@ -7,7 +7,8 @@ let catalogo = [
         ubicacion: 'Renca',
         imagen: 'p0001.png',
         disponibilidad: 10,
-        tiempo: 5
+        tiempo: 5,
+        precio:1990
     },
     { 
         codigo: 'P0002', 
@@ -17,7 +18,8 @@ let catalogo = [
         ubicacion: 'Renca',
         imagen: 'p0002.jpg',
         disponibilidad: 10,
-        tiempo: 5
+        tiempo: 5,
+        precio:1990
     },
     { 
         codigo: 'P0003', 
@@ -27,6 +29,8 @@ let catalogo = [
         ubicacion: 'Santiago Centro',
         imagen: 'p0003.jpg',
         disponibilidad: 3,
-        tiempo: 5
+        tiempo: 5,
+        precio:1990
     },
 ];
+console.log(catalogo);
