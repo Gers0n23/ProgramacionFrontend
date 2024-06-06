@@ -23,7 +23,7 @@
     .formtext{float:left; width: 20%;border: 2px solid #ccc; border-radius: 4px;}
     .button { font-size: 24px; background-color: #024b06; color: white; padding:14px 20px; margin: 8px 0; border: none; border-radius: 4px; cursor: pointer; width: 30%; }
     .btext{font-size: 12px; color: #fff; font-weight: bold;}
-    .gallery-container {float: left,width: 50% }
+    .gallery-container {float: left;width: 50% }
     .containerform {
         max-width: 600px;
         margin: 20px auto;
@@ -88,7 +88,13 @@
       .catalogo {
           text-align: center;
       }
-
+      .totalCatalogo {
+          text-align: center;
+          margin-top: 20px;
+          padding: auto;
+          font-weight: bold;
+          font-size: x-large;
+      }        
       /* Estilos CSS para el pie de página */
       footer {
           text-align: center;
@@ -134,8 +140,9 @@
       .product-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
-        gap: 20px;
+        justify-content: center;
+        align-items:end;
+        gap: 20px;;
     }
     
     .product-card {
@@ -145,21 +152,23 @@
         padding: 10px;
         width: 230px;
         text-align: center;
+        align-items: center;
     }
     
     .product-card img {
-        width: 100%;
-        height: auto;
+        width: auto;
+        height: 150px;
         border-radius: 5px;
     }
     
     .product-card h3 {
         font-size: 1.2em;
         margin: 10px 0;
+        height: 40px;
     }
     
     .product-card p {
-        font-size: 1em;
+        font-size: large;
         color: #333;
     }
     
@@ -171,10 +180,12 @@
         cursor: pointer;
         border-radius: 5px;
         font-size: 1em;
+        align-items: bottom;
     }
     
     .add-to-cart-btn:hover {
         background-color: #218838;
+        width: 102%;
     }
   
     .cart {
@@ -214,7 +225,7 @@
       border-radius: 3px; /* Bordes redondeados pequeños */
       font-size: 0.8em; /* Tamaño de fuente reducido */
       margin: 0 3px; /* Espacio entre botones */
-      width: 50px;
+      width: 30px;
       height: 30px;
   }
   
@@ -224,7 +235,7 @@
   
   .cart-item .remove-btn {
       background-color: #dc3545;
-      width: 150px;
+      width: 70px;
       height: 30px;
   }
   
@@ -232,6 +243,35 @@
       background-color: #c82333;
   }
 
-
-
+  .padre {
+    position: relative;
+  }
+  .hijo{
+    position: absolute;
+    background-color: red;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    top: 0.5rem;
+    left: 73rem;
+    align-items: center;
+  }
+  .hijo2{
+    position: absolute;
+    
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    top: 4rem;
+    left: 75.5rem;
+    align-items: center;
+  }
 </style>    

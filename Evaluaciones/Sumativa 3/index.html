@@ -5,19 +5,28 @@
     <script src="scripts/catalogo.js"></script>
     <script src="scripts/inventory.js"></script>
     <script src="scripts/form.js"></script>
-    <script src="scripts/cart.js"></script>
+    
     
 </head>
 <body>
     <header>
         <div class="container">
             <div>
-                <h2 id="branding"><span class="highlight"><img src="assets/inacaplogo2.jpg" alt="INACAPLudi_logo" width="30" height="30">nacap Ludi</span></h2>
+                <h1 id="branding"><span class="highlight"><img src="assets/inacaplogo2.jpg" alt="INACAPLudi_logo" width="50" height="50">nacap Ludi</span></h1>
             </div>
             <nav>
                 <ul>
-                   <li><a href="#" id="loginBtn"><span id="loginText"></span><img id="loginImg" src="assets/login_user.png" alt="INACAPLudi_logo" width="70" height="70"></a></li>
-
+                   <li>
+                    <div class='padre'>
+                        <a href="#" id="loginBtn"><img id="loginImg" src="assets/login_user.png" alt="INACAPLudi_logo" width="50" height="50"></a>
+                    </div>
+                    <span class="hijo2 p" id="loginText"></span>
+                    </li>
+                   <li>
+                    <div class='padre'><a href="#" id="cartBtn"><span id="cartText"></span><img id="cartImg2" src="assets/cart-9.png" alt="INACAPLudi_logo" width="50" height="50"></a>
+                    </div>
+                    <p class="hijo p"></p>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -31,34 +40,48 @@
     </section>
 
     <!-- Add the Modal HTML here -->
-    <div id="loginModal" class="modal">
+    <div id="loginModal" class="modal"> 
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Iniciar Sesión</h2>
-            <form id="loginForm">
+            <form id="loginForm" class="containerform">
                 <div class="form-group">
                     <label for="username">Usuario:</label>
                     <input type="text" id="username" name="username" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input class="container" type="password" id="password" name="password" required>
                 </div>
                 <div class="form-group">
                     <button type="submit">Iniciar Sesión</button>
                 </div>
+                    <button type="submit" name="submit" onclick="location.reload();">Cerrar Sesion</button>
             </form>
         </div>
     </div>
 
+    <!-- Add the Cart Modal HTML here -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="catalogo">Carrito de Compras</h2>
+            <div class="containerform" id="cartItems"></div>
+            <div class="containerform totalCatalogo"  id="totalPrice"></div>
+            <button id="checkoutBtn">Finalizar Compra</button>
+        </div>
+    </div>
+
+
     <section class="aida attention">
         <div class="container">
             <h2 id="interest">¡Descubre un mundo de estrategia y creatividad!</h2>
+            <h2 id="loginText"></h2>
         </div>
     </section>
 
     <section class="aida interest">
-        <div class="container">
+        <div class="catalogo">
             <h1>Catálogo de Juegos</h1>
             <p>Tenemos el mejor catálogo de juegos de rol y estrategia disponible, descubre nuevos mundos y conecta con nuestra increíble comunidad.</p>
             <div class="product-container">
@@ -69,12 +92,6 @@
     
     <section class="aida desire">
         <div class="container">
-            <h1>Carrito de Compras</h1>
-            <div id="cartItems">
-                <!-- Los elementos del carrito se agregarán aquí dinámicamente -->
-            </div>
-            <p id="totalPrice">Total: $0.00</p>
-            <button id="checkoutBtn">Finalizar Compra</button> <!-- Botón de Finalizar Compra -->
         </div>
     </section>
 
@@ -126,6 +143,10 @@
     <footer>
         <h3>InacapLudi © 2024 - By Gerson Cordero</h3>
     </footer>
+
     <script src="scripts/modal.js"></script>
+    <script src="scripts/cart.js"></script>
+   
+
 </body>
 </html>

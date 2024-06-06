@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
         productCard.classList.add('product-card');
 
         productCard.innerHTML = `
-            <img src="assets/${producto.imagen}" alt="${producto.nombre}" width="230" height="380">
+            <img src="assets/${producto.imagen}" alt="${producto.nombre}" width="230" height="80">
             <h3>${producto.nombre}</h3>
             <p>Precio: $${producto.precio}</p>
-            <p>Disponibilidad: ${producto.disponibilidad} unidades</p>
-            <button class="add-to-cart-btn">Agregar al carrito</button>
+            <p>Stock: ${producto.disponibilidad} un</p>
+            <button class="add-to-cart-btn">Agregar al carrito</button ali>
         `;
 
         productContainer.appendChild(productCard);

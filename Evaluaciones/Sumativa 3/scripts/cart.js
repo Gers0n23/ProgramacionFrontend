@@ -3,11 +3,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let cart = [];
 
     // Función para actualizar el carrito en la página
+    
     function updateCart() {
         const cartItems = document.getElementById('cartItems');
         const totalPriceElement = document.getElementById('totalPrice');
         cartItems.innerHTML = '';
         let totalPrice = 0;
+        const cartQuantityElement = document.querySelector('.hijo.p');
+        cartQuantityElement.textContent = cart.length;
+
+        const cartContainer = document.querySelector('.hijo');
+        if (cart.length < 1) {
+            cartContainer.style.backgroundColor = 'transparent';
+            cartContainer.style.color = 'black';
+        } else {
+            // Restaurar el color de fondo y el color de texto 
+            cartContainer.style.backgroundColor = ''; 
+            cartContainer.style.color = ''; 
+        }
 
         cart.forEach((item, index) => {
             const cartItem = document.createElement('div');
@@ -17,9 +30,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 <img src="${item.image}" alt="${item.name}" width="50" height="50">
                 <span>${item.name}</span>
                 <span>Cantidad: ${item.quantity}</span>
-                <span>Precio: $${(item.price * item.quantity).toFixed(2)}</span>
-                <button class="increase-btn" data-index="${index}">+</button>
+                <span>Precio: $${(item.price * item.quantity)}</span>
                 <button class="decrease-btn" data-index="${index}">-</button>
+                <button class="increase-btn" data-index="${index}">+</button>
                 <button class="remove-btn" data-index="${index}">Eliminar</button>
             `;
 
@@ -27,7 +40,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             totalPrice += item.price * item.quantity;
         });
 
-        totalPriceElement.textContent = `Total: $${totalPrice.toFixed(2)}`;
+        totalPriceElement.textContent = `Total: $${totalPrice}`;
 
         // Add event listeners for the new buttons
         document.querySelectorAll('.increase-btn').forEach(button => {
@@ -59,17 +72,40 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
+    document.addEventListener('DOMContentLoaded', updateCart);
+    updateCart();
+
     // Función para agregar un producto al carrito
     function addToCart(name, price, image) {
         const existingProductIndex = cart.findIndex(product => product.name === name);
-
-        if (existingProductIndex !== -1) {
-            cart[existingProductIndex].quantity += 1;
+        const productInCatalog = catalogo.find(product => product.nombre === name);
+    
+        if (productInCatalog.disponibilidad > 0) {
+            productInCatalog.disponibilidad -= 1;
+    
+            if (existingProductIndex !== -1) {
+                cart[existingProductIndex].quantity += 1;
+            } else {
+                cart.push({ name, price, image, quantity: 1 });
+            }
+    
+            updateCart();
+            updateCatalog();  // Agrega esta línea
         } else {
-            cart.push({ name, price, image, quantity: 1 });
+            console.log('Producto no disponible');
         }
+    }
 
-        updateCart();
+    function updateCatalog() {
+        catalogo.forEach(producto => {
+            const productElement = document.getElementById(producto.nombre);
+            if (productElement) {
+                const availabilityElement = productElement.querySelector('.disponibilidad');
+                if (availabilityElement) {
+                    availabilityElement.textContent = `Disponibilidad: ${producto.disponibilidad}`;
+                }
+            }
+        });
     }
 
     // Event listener para los botones "Agregar al carrito"
@@ -90,8 +126,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         // Guardar los detalles de la compra, dirección y datos del cliente inventados
         const orderDetails = {
             items: cart,
-            shippingAddress: "Dirección Inventada",
-            customerName: "Cliente Inventado",
+            shippingAddress: "Avenida siempre viva 123, Springfield, USA",
+            customerName: "Homero Simpson",
             // Agrega más detalles del cliente según sea necesario
         };
 
@@ -107,7 +143,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
     checkoutBtn.addEventListener('click', checkout);
 });
 
+function checkoutback() {
+
+    // Redirigir a la página de confirmación de compra después de guardar los datos
+    window.location.href = 'index.html';
+    const backcheckoutBtn = document.getElementById('checkoutBtn');
+    backcheckoutBtn.addEventListener('click', checkoutback); 
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+
+    let totalPrice = 0;
+
     // Recuperar los detalles del carrito del almacenamiento local
     const orderDetailsString = localStorage.getItem('orderDetails');
     const orderDetails = JSON.parse(orderDetailsString);
@@ -125,9 +172,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Mostrar los detalles del cliente
         customerName.value = orderDetails.customerName;
         customerAddress.value = orderDetails.shippingAddress;
-        cardNumber.value = orderDetails.cardNumber;
-        expiryDate.value = orderDetails.expiryDate;
-        cvv.value = orderDetails.cvv;
+        cardNumber.value = "1264-5678-1234-5678";
+        expiryDate.value = "12/23";
+        cvv.value = "123";
 
         // Mostrar el resumen de la compra
         const cartItems = orderDetails.items;
@@ -138,12 +185,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 <img src="${item.image}" alt="${item.name}" width="50" height="50">
                 <span>${item.name}</span>
                 <span>Cantidad: ${item.quantity}</span>
-                <span>Precio: $${(item.price * item.quantity).toFixed(2)}</span>
+                <span>Precio: $${(item.price * item.quantity)}</span>
             `;
             orderSummary.appendChild(cartItem);
+            totalPrice += item.price * item.quantity;
         });
     } else {
         console.error('No se encontraron detalles del carrito en el almacenamiento local');
     }
+    const totalPriceElement = document.getElementById('totalPrice');
+    totalPriceElement.textContent = `Total: $${totalPrice}`;
+    
 });
 
