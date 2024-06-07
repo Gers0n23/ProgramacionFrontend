@@ -2,13 +2,15 @@
 <head>
     <title>INACAPLudi - Club de Juegos de Mesa y Rol</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css">
-    <script src="scripts/catalogo.js"></script>
     <script src="scripts/inventory.js"></script>
+    <script src="scripts/catalogo.js"></script>
     <script src="scripts/form.js"></script>
     
     
 </head>
 <body>
+
+    <!-- Cabecera de Pagina -->
     <header>
         <div class="container">
             <div>
@@ -17,6 +19,7 @@
             <nav>
                 <ul>
                    <li>
+                    <!-- botones principales -->
                     <div class='padre'>
                         <a href="#" id="loginBtn"><img id="loginImg" src="assets/login_user.png" alt="INACAPLudi_logo" width="50" height="50"></a>
                     </div>
@@ -35,11 +38,11 @@
     <section class="imagen-container">
         <div class="container">
             <h4 id="home"></h4>
-            <img src="assets/logo1.jpg" alt="INACAPLudi_logo" width="1000" height="410"> 
+            <img src="assets/Banner.png" alt="INACAPLudi_logo" width="1000" height="210"> 
         </div>
     </section>
 
-    <!-- Add the Modal HTML here -->
+    <!-- Modulo de Login -->
     <div id="loginModal" class="modal"> 
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -61,7 +64,7 @@
         </div>
     </div>
 
-    <!-- Add the Cart Modal HTML here -->
+    <!-- Carrito de Compras -->
     <div id="cartModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -72,20 +75,18 @@
         </div>
     </div>
 
-
+    <!-- Mensaje  -->
     <section class="aida attention">
         <div class="container">
-            <h2 id="interest">¡Descubre un mundo de estrategia y creatividad!</h2>
+            <h2 id="interest">Catálogo de Juegos</h2>
             <h2 id="loginText"></h2>
         </div>
     </section>
 
+     <!-- Catalogo  -->
     <section class="aida interest">
         <div class="catalogo">
-            <h1>Catálogo de Juegos</h1>
-            <p>Tenemos el mejor catálogo de juegos de rol y estrategia disponible, descubre nuevos mundos y conecta con nuestra increíble comunidad.</p>
             <div class="product-container">
-                <!-- Aquí se mostrarán dinámicamente los productos -->
             </div>
         </div>
     </section>
@@ -94,7 +95,7 @@
         <div class="container">
         </div>
     </section>
-
+    <!-- Llamado a la accion  -->
     <section class="aida action">
         <div class="containerform" id="form">
             <form id="call2action" onsubmit="return sendForm(this);">

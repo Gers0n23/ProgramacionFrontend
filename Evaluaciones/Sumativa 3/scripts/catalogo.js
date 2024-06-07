@@ -132,4 +132,4 @@ let catalogo = [
         tiempo: 5
     }
 ];
-console.log(catalogo);
+

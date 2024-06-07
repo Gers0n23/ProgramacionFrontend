@@ -190,7 +190,7 @@
   
     .cart {
       margin-top: 20px;
-  }
+    }
   
   .cart .container {
       background-color: #fff;
@@ -257,7 +257,7 @@
     justify-content: center;
     font-size: 1rem;
     top: 0.5rem;
-    left: 73rem;
+    left: 70rem;
     align-items: center;
   }
   .hijo2{
@@ -271,7 +271,9 @@
     justify-content: center;
     font-size: 1rem;
     top: 4rem;
-    left: 75.5rem;
+    left: 72.6rem;
     align-items: center;
+    font-style:oblique;
+    font-weight: bold;
   }
-</style>    
+</style>

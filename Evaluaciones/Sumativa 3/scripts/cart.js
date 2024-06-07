@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         totalPriceElement.textContent = `Total: $${totalPrice}`;
 
-        // Add event listeners for the new buttons
+        // Event listeners para los botones de incrementar, disminuir y eliminar productos del carrito
         document.querySelectorAll('.increase-btn').forEach(button => {
             button.addEventListener('click', (event) => {
                 const index = event.target.getAttribute('data-index');
@@ -90,7 +90,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
     
             updateCart();
-            updateCatalog();  // Agrega esta línea
+            updateCatalog();
+            updateProductAvailability(producto);
         } else {
             console.log('Producto no disponible');
         }
@@ -106,6 +107,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 }
             }
         });
+    }
+
+    function updateProductAvailability(producto) {
+        const productCard = document.getElementById(producto.nombre);
+        if (productCard) {
+            const availabilityElement = productCard.querySelector('p:nth-child(4)');
+            availabilityElement.textContent = `Stock: ${producto.disponibilidad} un`;
+        }
     }
 
     // Event listener para los botones "Agregar al carrito"

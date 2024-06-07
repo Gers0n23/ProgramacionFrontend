@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    // Function to handle modal open
+    // Funcion para abrir un modal
     function openModal(modal) {
         modal.style.display = "block";
     }
 
-    // Function to handle modal close
+    // Funcion para cerrar un modal
     function closeModal(modal) {
         modal.style.display = "none";
     }
 
-    // Common function to close modal when clicking outside of it
+    // Funcion para cerrar un modal al hacer click fuera de el
     function setupOutsideClick(modal) {
         window.onclick = function(event) {
             if (event.target == modal) {
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
-    // Setup login modal
+    // Funcion para actualizar el modal
     var loginModal = document.getElementById("loginModal");
     var loginBtn = document.getElementById("loginBtn");
     var loginClose = loginModal.getElementsByClassName("close")[0];
@@ -41,19 +41,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
         var username = document.getElementById("username").value;
 
         loginText.textContent = username;
-        loginImg.src = "assets/people.png"; // Update this to the path of the new image
+        loginImg.src = "assets/people.png";
 
         closeModal(loginModal);
     }
 
-    // Setup cart modal
+    // Funcion para actualizar el carrito
     var cartModal = document.getElementById("cartModal");
     var cartBtn = document.getElementById("cartBtn");
     var cartClose = cartModal.getElementsByClassName("close")[0];
 
     cartBtn.onclick = function() {
         openModal(cartModal);
-        updateCart(); // Update the cart when it's opened
+        updateCart();
     }
 
     cartClose.onclick = function() {
