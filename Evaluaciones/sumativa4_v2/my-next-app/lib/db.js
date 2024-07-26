@@ -19,11 +19,13 @@ export async function getUsers() {
 
 export async function createUser(user) {
   const db = await getDb();
-  const { username, password } = user;
+  const { username, password, email, real_name } = user;
+  
   const result = await db.run(
-    'INSERT INTO users (username, password) VALUES (?, ?)',
-    [username, password]
+    'INSERT INTO users (username, password, email, real_name) VALUES (?, ?, ?, ?)',
+    [username, password, email, real_name]
   );
+  
   return { id: result.lastID, ...user };
 }
 

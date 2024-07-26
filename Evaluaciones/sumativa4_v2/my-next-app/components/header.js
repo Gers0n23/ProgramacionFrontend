@@ -1,13 +1,20 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import { useCart } from '../hooks/useCart';
+import { useCart } from '../context/CartContext';
+import CartModal from './CartModal';
+import AuthModal from './AuthModal';
 
 export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showCart, setShowCart] = useState(false);
-  const { cart, removeFromCart, updateQuantity } = useCart();
+  const [showAuth, setShowAuth] = useState(false); // Añadir estado para el modal de autenticación
+  const { cart } = useCart();
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+
+  const handleAuthSuccess = () => {
+    setIsLoggedIn(true);
+  };
 
   return (
     <header className="bg-gray-800 text-white py-4">
@@ -15,7 +22,7 @@ export default function Header() {
         <h1 className="text-2xl font-bold">
           <span className="flex items-center">
             <Image src="/assets/inacaplogo2.jpg" alt="INACAPLudi_logo" width={50} height={50} />
-            <span className="ml-2">nacap Ludi</span>
+            <span className="ml-2">INACAP Ludi</span>
           </span>
         </h1>
         <nav>
@@ -23,7 +30,7 @@ export default function Header() {
             <li>
               <button 
                 className="flex flex-col items-center"
-                onClick={() => setIsLoggedIn(!isLoggedIn)}
+                onClick={() => setShowAuth(true)} // Mostrar el modal de autenticación
               >
                 <Image src="/assets/login_user.png" alt="Login" width={50} height={50} />
                 <span>{isLoggedIn ? 'Logout' : 'Login'}</span>
@@ -43,37 +50,11 @@ export default function Header() {
       </div>
 
       {showCart && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-4 rounded-lg max-w-lg w-full">
-            <h2 className="text-2xl font-bold mb-4">Carrito de Compras</h2>
-            {cart.map((item) => (
-              <div key={item.id} className="flex justify-between items-center mb-2">
-                <span>{item.title}</span>
-                <div>
-                  <input 
-                    type="number" 
-                    min="1" 
-                    value={item.quantity} 
-                    onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
-                    className="w-16 mr-2 p-1 border rounded"
-                  />
-                  <button 
-                    onClick={() => removeFromCart(item.id)}
-                    className="bg-red-500 text-white px-2 py-1 rounded"
-                  >
-                    Eliminar
-                  </button>
-                </div>
-              </div>
-            ))}
-            <button 
-              onClick={() => setShowCart(false)}
-              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
-            >
-              Cerrar
-            </button>
-          </div>
-        </div>
+        <CartModal onClose={() => setShowCart(false)} />
+      )}
+      
+      {showAuth && (
+        <AuthModal onClose={() => setShowAuth(false)} onAuthSuccess={handleAuthSuccess} />
       )}
     </header>
   );
